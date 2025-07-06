@@ -26,10 +26,10 @@ const formSchema = z
   .object({
     name: z.string().min(1, { message: "Name is required" }),
     email: z.string().email(),
-    passowrd: z.string().min(1, { message: "Password is required" }),
+    password: z.string().min(1, { message: "Password is required" }),
     confirmPassword: z.string().min(1, { message: "Password is required" }),
   })
-  .refine((data) => data.passowrd === data.confirmPassword, {
+  .refine((data) => data.password === data.confirmPassword, {
     message: "Passwords don't match",
     path: ["confirmPassword"],
   })
@@ -43,7 +43,7 @@ export const SignUpView = () => {
     defaultValues: {
       name: "",
       email: "",
-      passowrd: "",
+      password: "",
       confirmPassword: "",
     },
   })
@@ -56,7 +56,7 @@ export const SignUpView = () => {
       {
         name: data.name,
         email: data.email,
-        password: data.passowrd,
+        password: data.password,
       },
       {
         onSuccess: () => {
@@ -134,7 +134,7 @@ export const SignUpView = () => {
                 <div className="grid gap-3">
                   <FormField
                     control={form.control}
-                    name="passowrd"
+                    name="password"
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel>Password</FormLabel>
@@ -176,7 +176,7 @@ export const SignUpView = () => {
                   </Alert>
                 )}
                 <Button disabled={isLoading} type="submit" className="w-full">
-                  Sign in
+                  Sign up
                 </Button>
                 <div className="after:border-border relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t">
                   <span className="bg-card text-muted-foreground relative z-10 px-2">

@@ -24,7 +24,7 @@ import {
 
 const formSchema = z.object({
   email: z.string().email(),
-  passowrd: z.string().min(1, { message: "Password is required" }),
+  password: z.string().min(1, { message: "Password is required" }),
 })
 
 export const SignInView = () => {
@@ -36,7 +36,7 @@ export const SignInView = () => {
     resolver: zodResolver(formSchema),
     defaultValues: {
       email: "",
-      passowrd: "",
+      password: "",
     },
   })
 
@@ -47,7 +47,7 @@ export const SignInView = () => {
     authClient.signIn.email(
       {
         email: data.email,
-        password: data.passowrd,
+        password: data.password,
       },
       {
         onSuccess: () => {
@@ -104,7 +104,7 @@ export const SignInView = () => {
                 <div className="grid gap-3">
                   <FormField
                     control={form.control}
-                    name="passowrd"
+                    name="password"
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel>Password</FormLabel>
